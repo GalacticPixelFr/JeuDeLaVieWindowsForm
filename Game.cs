@@ -7,33 +7,14 @@ namespace JeuDeLaVieWindowsForm
 {
     public class Game
     {
-        private int n;
-        private int iter;
-        public Grid grid;
-        private List<Coords> AliveCellsCoords;
+        private int n; // taille de la grille
+        public Grid grid; // grille des emplacements possibles
+        private List<Coords> AliveCellsCoords; // liste des coordonnées des cellules vivantes en début de simulation.
+
         
         private Random rand = new Random();
 
-        public Game(int nbCells, int nbIterations)
-        {
-            n = nbCells;
-            iter = nbIterations;
-
-            AliveCellsCoords = new List<Coords>();
-            for (int y = 0; y < n; y++)
-            {
-                for (int x = 0; x < n; x++)
-                {
-                    if (rand.Next(0,101) <= 50)
-                    {
-                        AliveCellsCoords.Add(new Coords(x,y));
-                    }
-                }
-            }
-            
-            grid = new Grid(n, AliveCellsCoords);
-        }
-        
+        //Constructeur de la class Game
         public Game(int nbCells)
         {
             n = nbCells;
@@ -51,20 +32,6 @@ namespace JeuDeLaVieWindowsForm
             }
             
             grid = new Grid(n, AliveCellsCoords);
-        }
-
-        public void RunGameConsole()
-        {
-            grid.DisplayGrid();
-            for (int i = 0; i < iter; i++)
-            {
-                //Console.WriteLine(grid.nbAliveAdded);
-                List<Coords> aliveList = grid.getCoordsCellsAlive();
-                //Console.WriteLine(aliveList.Count);
-                grid.UpdateGrid();
-                grid.DisplayGrid();
-                Thread.Sleep(1000);
-            }
         }
 
         public void Paint(Graphics g)

@@ -7,15 +7,18 @@ namespace JeuDeLaVieWindowsForm
 {
     public class Grid
     {
-        public int _n { get; private set; }
+        public int _n { get; private set; } // taille de la grille accesseurs en lecture et en écriture
 
-        public Cell[,] TabCells;
-        public int nbAliveAdded = 0;
+        public Cell[,] TabCells;  // Tableau à deux dimensions contenant des objets de type Cell
 
-        public Grid(int nbCells, List<Coords> AliveCellsCoords)
+        public Grid(int nbCells, List<Coords> AliveCellsCoords) //Constructeur de la class Grid
         {
-            this._n = nbCells;
-            TabCells = new Cell[_n, _n];
+            this._n = nbCells; // Initialisation de l’attribut _n au travers de l’accesseur en écriture
+            TabCells = new Cell[_n, _n];// Création d’un tableau à deux dimensions de taille n,n
+            
+            /* Remplissage du tableau avec à chaque emplacement une instance d’une cellule
+            Cell créée vivante (true) si les coordonnées sont dans la liste AliveCellsCoords
+            ou absente (false) sinon. */
             for (int y = 0; y < _n; y++)
             {
                 for (int x = 0; x < _n; x++)
@@ -26,7 +29,6 @@ namespace JeuDeLaVieWindowsForm
                         
                         if (AliveCellsCoords[i]._x == x && AliveCellsCoords[i]._y == y)
                         {
-                            nbAliveAdded++;
                             TabCells[x,y] = new Cell(true);
                             break;
                         }
@@ -35,7 +37,7 @@ namespace JeuDeLaVieWindowsForm
             }
         }
 
-        public int getNbAliveNeighboor(int i, int j)
+        public int getNbAliveNeighboor(int i, int j) // Méthode qui permet de déterminer le nombre de cellules vivantes autour d’un emplacement de coordonnées (i,j)
         {
             int nbCells = 0;
             if (i - 1 >= 0 && TabCells[i - 1, j]._isAlive == true)
@@ -73,78 +75,14 @@ namespace JeuDeLaVieWindowsForm
             return nbCells;
         }
 
-        public List<Coords> getCoordsNeighboors(int i, int j)
-        {
-            List<Coords> coordsNeighboor = new List<Coords>();
-            int minI = i - 1;
-            int maxI = i + 1;
-            int minJ = j - 1;
-            int maxJ = j + 1;
-
-            for (int y = minI; y <= maxI && y >= 0; y++)
-            {
-                for (int x = minJ; x <= maxJ && x >= 0; x++)
-                {
-                    if (!TabCells[x,y]._isAlive)
-                    {
-                        coordsNeighboor.Add(new Coords(x,y));
-                    }
-                }
-            }
-
-            if (coordsNeighboor.Contains(new Coords(i,j)))
-            {
-                coordsNeighboor.Remove(new Coords(i,j));
-            }
-            return coordsNeighboor;
-        }
-
-        public List<Coords> getCoordsCellsAlive()
-        {
-            List<Coords> aliveCoordsCells = new List<Coords>();
-            for (int y = 0; y < _n && y >= 0; y++)
-            {
-                for (int x = 0; x < _n && x >= 0; x++)
-                {
-                    if (TabCells[x,y]._isAlive)
-                    {
-                        aliveCoordsCells.Add(new Coords(x,y));
-                    }
-                }
-            }
-
-            return aliveCoordsCells;
-        }
-
-        public void DisplayGrid()
-        {
-            for (int y = 0; y < _n; y++)
-            {
-                Console.Write(String.Concat(Enumerable.Repeat("+---", _n)));
-                Console.Write("+\n");
-                for (int x = 0; x < _n; x++)
-                {
-                    if (TabCells[x,y]._isAlive)
-                    {
-                        Console.Write("| X ");
-                    }
-                    else
-                    {
-                        Console.Write("|   ");
-                    }
-                    
-                }
-                Console.Write("|\n");
-                
-                
-            }
-            Console.Write(String.Concat(Enumerable.Repeat("+---", _n)));
-            Console.Write("+\n");
-        }
-
+        /*Méthode qui parcourt chaque cellule et qui met
+        à jour leur attribut _nextStep, via son accesseur en écriture, en fonction des règles
+        de la simulation. L’attribut est mis à true si la cellule reste en vie ou apparaît et
+        à false si la cellule à cet emplacement disparaît ou reste absente. Une fois toute la
+        grille parcourue, une deuxième passe est effectué pour associer la valeur de nexStep
+        à l’attribut isAlive de chaque cellule.*/
         public void UpdateGrid()
         {
-            //Console.WriteLine($"Taille du tableau : {TabCells.Length}, n : {_n}");
             for (int y = 0; y < _n; y++)
             {
                 for (int x = 0; x < _n; x++)
