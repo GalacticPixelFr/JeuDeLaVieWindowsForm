@@ -37,26 +37,40 @@ namespace JeuDeLaVieWindowsForm
 
         public int getNbAliveNeighboor(int i, int j)
         {
-            int nbAliveNeighboor = 0;
-            int minI = i - 1;
-            int maxI = i + 1;
-            int minJ = j - 1;
-            int maxJ = j + 1;
-
-            for (int y = minI; y <= maxI && y < _n && y >= 0; y++)
+            int nbCells = 0;
+            if (i - 1 >= 0 && TabCells[i - 1, j]._isAlive == true)
             {
-                for (int x = minJ; x <= maxJ && x < _n && x >= 0; x++)
-                {
-                    if (TabCells[x,y]._isAlive)
-                    {
-                        nbAliveNeighboor += 1;
-                    }
-                }
+                nbCells += 1;
             }
-
-            nbAliveNeighboor -= 1;
-            //Console.WriteLine($"NbNeighboor = {nbAliveNeighboor}");
-            return nbAliveNeighboor;
+            if (i + 1 < _n && TabCells[i + 1, j]._isAlive == true)
+            {
+                nbCells += 1;  
+            }
+            if (j - 1 >= 0 && TabCells[i, j - 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            if (j + 1 < _n && TabCells[i, j + 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            if (j + 1 < _n && i + 1 < _n && TabCells[i + 1, j + 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            if (i - 1 >= 0 && j - 1 >= 0 && TabCells[i - 1, j - 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            if (i + 1 < _n && j - 1 >= 0 && TabCells[i + 1, j - 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            if (i - 1 >= 0 && j + 1 < _n && TabCells[i - 1, j + 1]._isAlive == true)
+            {
+                nbCells += 1;
+            }
+            return nbCells;
         }
 
         public List<Coords> getCoordsNeighboors(int i, int j)
