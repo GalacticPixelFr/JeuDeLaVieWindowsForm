@@ -1,0 +1,10 @@
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\bin\Debug\JeuDeLaVieWindowsForm.exe.config
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\bin\Debug\JeuDeLaVieWindowsForm.exe
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\bin\Debug\JeuDeLaVieWindowsForm.pdb
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.csproj.AssemblyReference.cache
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.Properties.Resources.resources
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.csproj.GenerateResource.cache
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.csproj.CoreCompileInputs.cache
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.exe
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.pdb
+C:\Users\Alienware\Downloads\Cours\JeuDeLaVieWindowsForm\JeuDeLaVieWindowsForm\obj\Debug\JeuDeLaVieWindowsForm.Form1.resources
